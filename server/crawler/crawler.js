@@ -1,6 +1,7 @@
 const Crawler = require("crawler");
 const mongoose = require("mongoose");
 const server = require("../lib/server");
+const { getWordFrequency, getIntroduction } = require("../textInfo/textInfo");
 const Tale = mongoose.model("Tale");
 
 const domain = "https://www.cs.cmu.edu/~spok/grimmtmp/";
@@ -73,6 +74,7 @@ async function parsePage(res, done, $, url) {
       child = new Tale({
         url: childUrl,
         title: title,
+        intro: title,
         wordFrequency: {},
       });
     }
@@ -95,9 +97,8 @@ async function parsePage(res, done, $, url) {
     if (err) {
       throw err;
     }
-    // TODO: Word Frequency Information
-    // console.log(res.body);
-    tale["wordFrequency"] = {};
+    tale["intro"] = getIntroduction(res.body);
+    tale["wordFrequency"] = getWordFrequency(res.body);
     await tale.save();
     return done();
   });

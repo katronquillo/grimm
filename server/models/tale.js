@@ -11,6 +11,10 @@ const TaleSchema = new Schema({
     type: String,
     required: true,
   },
+  intro: {
+    type: String,
+    required: true,
+  },
   wordFrequency: {
     type: Schema.Types.Mixed,
     required: true,

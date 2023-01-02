@@ -16,11 +16,7 @@ const rawCrawl = new Crawler({
 
 // Start crawling webpages
 function startCrawl() {
-  let filter = {
-    url: { $regex: `/^${domain}$/` },
-  };
-
-  Tale.findOne(filter, "url", function (err, seed) {
+  Tale.findOne({}, "url", function (err, seed) {
     if (err) {
       throw err;
     }

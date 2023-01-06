@@ -15,10 +15,17 @@ async function getTales(req, res) {
   let searchResult = index.search(q, {});
   let results = [];
   for (let i = 0; i < searchResult.length; i++) {
-    let tale = await Tale.findOne({ url: searchResult[i]["ref"] }, "-__v");
-    tale["contentScore"] = searchResult[i]["score"];
-    results.push(tale);
+    let tale = await Tale.findOne(
+      { url: searchResult[i]["ref"] },
+      "-__v -wordFrequency"
+    );
+    results.push({
+      ...tale["_doc"],
+      contentScore: searchResult[i]["score"],
+    });
   }
+
+  console.log(results);
 
   // Limit and send results
   results = results.slice(0, limit);

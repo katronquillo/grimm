@@ -12,10 +12,15 @@
   "bugs": {
     "url": "https://github.com/katronquillo/grimm/issues"
   },
+  "scripts": {
+    "start": "node ./server/index.js"
+  },
   "homepage": "https://github.com/katronquillo/grimm#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
     "crawler": "^1.3.0",
+    "elasticlunr": "^0.9.5",
     "express": "^4.18.2",
     "mongoose": "^6.8.2",
     "stopword": "^2.0.5"

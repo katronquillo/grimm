@@ -1,30 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import SearchInput from "./SearchInput";
 
 function SearchBar(props) {
-  const [query, setQuery] = React.useState("");
-
-  function handleQueryChange(event) {
-    setQuery(event.target.value);
-  }
   return (
     <div className="searchbar">
-      <h2 className="searchbar--title">Grimm</h2>
-      <div className="searchbar--input">
-        <input
-          className="searchbar--query"
-          type="text"
-          name="q"
-          value={props.query}
-          onChange={(event) => handleQueryChange(event)}
-          placeholder="Search the Grimm Tales"
-        />
-        <button
-          className="searchbar--submit"
-          onClick={() => props.onSearch(query)}
-        >
-          Search
-        </button>
-      </div>
+      <Link to="/">
+        <h2 className="searchbar--title">Grimm</h2>
+      </Link>
+      <SearchInput
+        query={props.query}
+        onQueryChange={props.onQueryChange}
+        onSearch={props.onSearch}
+      />
     </div>
   );
 }

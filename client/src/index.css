@@ -1,4 +1,6 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -6,6 +8,13 @@ body {
   margin: 0;
   font-family: Karla;
   background: #fcf7f8;
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
 }
 
 .searchbar {
@@ -23,42 +32,52 @@ body {
 }
 
 .searchbar--title {
+  color: #ffffff;
+  text-decoration: none;
   margin-right: 20px;
 }
 
 .searchbar--query {
   width: 400px;
   height: 35px;
-  margin-right: 20px;
+  margin: 10px;
   padding: 5px;
   border-radius: 5px;
   outline: solid 1px #d5d4d8;
   border: none;
-  background-color: #0a014f;
 
   font-weight: 400px;
-  color: #ffffff;
   font-size: 12px;
 }
 
-.searchbar--query::placeholder {
-  color: #d5d4d8;
-}
-
 .searchbar--submit {
-  background-color: #ffffff;
   border-radius: 5px;
   border: none;
   width: 100px;
   height: 35px;
 
   font-weight: 700;
-  color: #0d0d0d;
   font-size: 16px;
   letter-spacing: -0.05em;
+
+  cursor: pointer;
 }
 
-.results {
+.results .searchbar--query {
+  color: #ffffff;
+  background-color: #0a014f;
+}
+
+.results .searchbar--query::placeholder {
+  color: #d5d4d8;
+}
+
+.results .searchbar--submit {
+  background-color: #ffffff;
+  color: #0d0d0d;
+}
+
+.results--list {
   margin: 15px 20px;
 }
 
@@ -71,7 +90,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: space-evenly;
 }
 
 .result--header {
@@ -102,4 +121,39 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 70px;
+}
+
+.home--title {
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.1em;
+  margin-bottom: 20px;
+}
+
+.home .searchbar--input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home .searchbar--query {
+  background-color: #fcf7f8;
+  color: #0d0d0d;
+  margin-bottom: 30px;
+}
+
+.home .searchbar--query::placeholder {
+  color: #0d0d0d;
+}
+
+.home .searchbar--submit {
+  background-color: #0a014f;
+  color: #ffffff;
 }

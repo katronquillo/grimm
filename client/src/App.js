@@ -1,9 +1,15 @@
 import React from "react";
-import SearchBar from "./components/SearchBar";
-import Result from "./components/Result";
+import Results from "./pages/Results";
+import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
+  const [query, setQuery] = React.useState("");
   const [results, setResults] = React.useState([]);
+
+  function handleQueryChange(event) {
+    setQuery(event.target.value);
+  }
 
   async function handleSearch(query) {
     const res = await fetch(
@@ -14,21 +20,33 @@ function App() {
     );
     const data = await res.json();
     setResults(data);
-    console.log("We made a request!", `query: ${query}`, data);
+    console.log("Searched!", query, results);
   }
 
   return (
-    <div className="App">
-      <SearchBar onSearch={handleSearch} />
-      <div className="results">
-        {results.map((result) => (
-          <Result
-            key={result._id}
-            result={{ ...result }}
+    <Routes>
+      <Route
+        index
+        element={
+          <Home
+            query={query}
+            onQueryChange={handleQueryChange}
+            onSearch={handleSearch}
           />
-        ))}
-      </div>
-    </div>
+        }
+      />
+      <Route
+        path="/results"
+        element={
+          <Results
+            query={query}
+            onQueryChange={handleQueryChange}
+            onSearch={handleSearch}
+            results={results}
+          />
+        }
+      />
+    </Routes>
   );
 }
 

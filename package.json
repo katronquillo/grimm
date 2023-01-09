@@ -13,9 +13,11 @@
     "url": "https://github.com/katronquillo/grimm/issues"
   },
   "scripts": {
+    "setup": "npm install && cd client && npm install && cd ..",
     "server": "node ./server/index.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "npm run setup && npm run dev"
   },
   "homepage": "https://github.com/katronquillo/grimm#readme",
   "dependencies": {

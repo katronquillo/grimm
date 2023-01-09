@@ -3,7 +3,6 @@ import SearchBar from "../components/SearchBar";
 import Result from "../components/Result";
 
 function Results(props) {
-  console.log("props", props);
   return (
     <div className="results">
       <SearchBar

@@ -20,7 +20,6 @@ function App() {
     );
     const data = await res.json();
     setResults(data);
-    console.log("Searched!", query, results);
   }
 
   return (

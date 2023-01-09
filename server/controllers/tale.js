@@ -25,8 +25,6 @@ async function getTales(req, res) {
     });
   }
 
-  console.log(results);
-
   // Limit and send results
   results = results.slice(0, limit);
   res.format({

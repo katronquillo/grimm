@@ -83,7 +83,6 @@ async function parsePage(res, done, $, url) {
 
   // Stop crawling seed once children added to queue
   if (url === domain) {
-    console.log(`queing ${childLinks.length} links`);
     rawCrawl.queue(childLinks);
     return done();
   }
